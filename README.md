@@ -81,5 +81,5 @@ id |= nodeId << 12
 Finally, we fill the last 12 bits with the local counter.
 
 ```java
-id|=sequence
+id |= sequence
 ```
