@@ -62,20 +62,20 @@ This is local to a node and of 12 bits. It's maximum value is **2<sup>12</sup> -
 First of all, we adjust our timestamp w.r.t. to the custom epoch
 
 ```java
-    long currentTimestamp=Instant.now().toEpochMilli()-DEFAULT_EPOCH;
+long currentTimestamp=Instant.now().toEpochMilli()-DEFAULT_EPOCH;
 ```
 
 Now, the first 41 bits (after the unused bit) of the ID will be filled with the epoch timestamp. We can achieve this by
 using left shift
 
 ```java
-id=currentTimestamp<<(10+12)
+id = currentTimestamp << (10 + 12)
 ```
 
 Next, we will take the configured node id (which we will get from the machine's MAC address) and fill the 10 bits.
 
 ```java
-id|=nodeId<<12
+id |= nodeId << 12
 ```
 
 Finally, we fill the last 12 bits with the local counter.
